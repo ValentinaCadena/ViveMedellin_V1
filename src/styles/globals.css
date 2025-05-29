@@ -4,6 +4,21 @@
 :root {
   --font-geist-sans: 'Geist', sans-serif;
   --font-geist-mono: 'Geist Mono', monospace;
+  --altBlue: #00473E;
+  --darkGray: #475D5B;
+  --Emerald: #4CDA95;
+  --darkBlue: #043D74;
+  --Orange: #F97316;
+  --Gray: #EAEAEA;
+}
+
+@theme inline {
+  --color-altBlue: var(--darkBlue);
+  --colordarkGray: var(--darkGray);
+  --color-Emerald: var(--Emerald);
+  --color-darkBlue: var(--darkBlue);
+  --color-Orange: var(--Orange);
+  --color-Gray: var(--Gray);
 }
 
 /* Estilos Generales */
