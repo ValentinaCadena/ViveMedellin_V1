@@ -14,11 +14,12 @@
 
 @theme inline {
   --color-altBlue: var(--darkBlue);
-  --colordarkGray: var(--darkGray);
+  --color-darkGray: var(--darkGray);
   --color-Emerald: var(--Emerald);
   --color-darkBlue: var(--darkBlue);
   --color-Orange: var(--Orange);
   --color-Gray: var(--Gray);
+  --color-Blue: var(--color-blue-950)
 }
 
 /* Estilos Generales */

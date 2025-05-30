@@ -22,9 +22,9 @@ const Button = ({
 
   const colorClass =
     color === "blue"
-      ? "bg-white text-altBlue hover:text-white hover:bg-altBlue border-darkGray"
+      ? "bg-white text-altBlue hover:text-white hover:bg-altBlue border-darkGray hover:border-altBlue"
       : color === "orange"
-      ? "bg-Orange text-white hover:text-Orange hover:bg-white shadow-xl border-transparent hover:border-gray-300"
+      ? "bg-Orange text-white hover:bg-orange-300 shadow-xl border-transparent"
       : color === "emerald"
       ? "bg-Emerald text-darkBlue hover:text-Emerald hover:bg-darkBlue border-transparent"
       : color === "gray"
@@ -33,7 +33,7 @@ const Button = ({
 
 
   return (
-    <button onClick={onClick} className={`${className} ${colorClass} rounded-xl flex justify-center items-center border-2 p-2 gap-2 px-4 hover:cursor-pointer`}>
+    <button onClick={onClick} className={`${className} ${colorClass} rounded-lg font-semibold flex justify-center items-center border-2 p-2 gap-2 px-4 hover:cursor-pointer`}>
       {icon && iconPosition !== "right" && (
         <Icon icon={icon} width={widthIcon}/>
       )}
