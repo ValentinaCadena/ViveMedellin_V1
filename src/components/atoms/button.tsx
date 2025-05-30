@@ -28,7 +28,7 @@ const Button = ({
       : color === "emerald"
       ? "bg-Emerald text-darkBlue hover:text-Emerald hover:bg-darkBlue border-transparent"
       : color === "gray"
-      ? "bg-gray text-black hover:text-gray-800 hover:bg-gray-300"
+      ? "bg-gray text-black hover:text-gray-800 hover:bg-gray-300 border-transparent"
       : "";
 
 

@@ -1,10 +1,12 @@
 import Button from "../atoms/button"
+import { useRouter } from "next/router"
 
 export default function LoginBottom () {
+    const router = useRouter();
     return (
         <div className="text-center flex flex-col gap-4 w-full max-w-125">
             <p className="underline text-lg text-darkGray font-semibold">¿Hás olvidado tu contraseña?</p>
-            <Button text="Continuar" color="orange" className="text-xl"></Button>
+            <Button onClick={() => router.push('/busquedaGrupos')} text="Continuar" color="orange" className="text-xl"></Button>
             <div className="flex flex-row gap-16 w-full text-darkGray font-semibold py-2">
                 <img src="/line.png" alt="line" width={158} className="py-3"/>
                 <p className="text-darkGray">O BIEN</p>

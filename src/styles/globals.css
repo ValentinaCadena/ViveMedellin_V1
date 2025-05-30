@@ -9,7 +9,6 @@
   --Emerald: #4CDA95;
   --darkBlue: #043D74;
   --Orange: #F97316;
-  --Gray: #EAEAEA;
 }
 
 @theme inline {
@@ -18,7 +17,7 @@
   --color-Emerald: var(--Emerald);
   --color-darkBlue: var(--darkBlue);
   --color-Orange: var(--Orange);
-  --color-Gray: var(--Gray);
+  --color-Gray: var(--color-gray-50);
   --color-Blue: var(--color-blue-950)
 }
 

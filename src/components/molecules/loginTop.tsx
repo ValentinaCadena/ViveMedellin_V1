@@ -1,4 +1,4 @@
-export default function LoginHeader () {
+export default function LoginTop () {
     return (
         <div className="full flex flex-col gap-4 justify-center items-center">
             <div className="flex flex-row justify-center gap-2 items-center text-center">
