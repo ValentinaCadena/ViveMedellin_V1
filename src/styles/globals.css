@@ -19,7 +19,8 @@
   --color-darkBlue: var(--darkBlue);
   --color-Orange: var(--Orange);
   --color-Gray: var(--Gray);
-  --color-Blue: var(--color-blue-950)
+  --color-Blue: var(--color-blue-950);
+  --color-altGray: var(--color-slate-300)
 }
 
 /* Estilos Generales */

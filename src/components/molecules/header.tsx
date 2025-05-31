@@ -2,8 +2,8 @@ import Button from "../atoms/button";
 
 export default function Header () {
     return (
-        <div className="flex flex-row justify-center mt-5 gap-8 relative pb-5 border-b-2 border-Gray">
-            <img src="/logos/logoVM.png" alt="VivaMedellín" width={181} className="top-0 left-8 absolute"/>
+        <div className="flex flex-row justify-center items-center h-full py-3 gap-8 relative border-b-2 border-Gray">
+            <img src="/logos/logoVM.png" alt="VivaMedellín" width={181} className="top-1 left-8 absolute"/>
             <Button icon="mdi:home-outline" color="orangeIcon" widthIcon="55"></Button>
             <Button icon="mdi:calendar-month-outline" color="orangeIcon" widthIcon="55"></Button>
             <Button icon="mdi:map-outline" color="orangeIcon" widthIcon="55"></Button>
