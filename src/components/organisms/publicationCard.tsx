@@ -9,7 +9,7 @@ interface PublicationCardProps {
     author_date: string;
     textPublication: React.ReactNode;
     commentAuthor: string;
-    comment: React.ReactNode;
+    comment: string;
 }
 
 const PublicationCard = ({ groupImage, groupName, author_date, textPublication, commentAuthor, comment}: PublicationCardProps) => {

@@ -9,7 +9,7 @@ export default function PublicationSection () {
             author_date="Santiago - Fecha"
             textPublication={<>Publicación de texto -- Línea 1 <br />Línea 2 <br /> Línea 3</>}
             commentAuthor="Valentina"
-            comment={<>Comentario -- Línea 1 <br />Línea 2</>}
+            comment="Comentario -- Linea 1 Linea 2"
             >
             </PublicationCard>
             <PublicationCard 
@@ -18,7 +18,7 @@ export default function PublicationSection () {
             author_date="Santiago - Fecha"
             textPublication={<>Publicación de texto -- Línea 1 <br />Línea 2 <br /> Línea 3</>}
             commentAuthor="Valentina"
-            comment={<>Comentario -- Línea 1 <br />Línea 2</>}
+            comment="Comentario -- Linea 1 Linea 2"
             >
             </PublicationCard>
             <PublicationCard 
@@ -27,7 +27,7 @@ export default function PublicationSection () {
             author_date="Santiago - Fecha"
             textPublication={<>Publicación de texto -- Línea 1 <br />Línea 2 <br /> Línea 3</>}
             commentAuthor="Valentina"
-            comment={<>Comentario -- Línea 1 <br />Línea 2</>}
+            comment="Comentario -- Linea 1 Linea 2"
             >
             </PublicationCard>
         </div>
