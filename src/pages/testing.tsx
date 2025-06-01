@@ -1,5 +1,9 @@
+import SearchTitle from "@/components/atoms/searchTitle"
+
 export default function Testing () {
     return (
-        <div></div>
+        <div>
+            <SearchTitle></SearchTitle>
+        </div>
     )
 }
