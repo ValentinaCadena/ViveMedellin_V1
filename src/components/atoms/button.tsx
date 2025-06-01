@@ -40,7 +40,7 @@ const Button = ({
       : color === "roundedEmerald"
       ? "bg-Emerald text-darkBlue hover:text-Emerald hover:bg-darkBlue border-transparent p-2 rounded-full font-semibold"
       : color === "gray"
-      ? "bg-gray text-black hover:text-gray-800 hover:bg-gray-300 border-transparent rounded-lg p-2 px-4 font-semibold"
+      ? "bg-Gray2 text-black hover:text-gray-800 hover:bg-gray-300 border-transparent rounded-lg p-2 px-4 font-semibold"
       : "";
 
 

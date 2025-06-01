@@ -14,7 +14,7 @@ interface PublicationCardProps {
 
 const PublicationCard = ({ groupImage, groupName, author_date, textPublication, commentAuthor, comment}: PublicationCardProps) => {
     return (
-        <div className="bg-white border-2 border-altGray shadow-lg space-y-4 p-4 px-6 pb-12 rounded-3xl">
+        <div className="bg-white border-2 w-full border-altGray shadow-lg space-y-4 p-4 px-6 pb-12 rounded-3xl">
             <GroupCard image={groupImage} title={groupName} text={author_date}></GroupCard>
             <p className="text-2xl font-semibold text-Blue">{textPublication}</p>
             <ReactionSection></ReactionSection>

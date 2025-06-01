@@ -6,7 +6,7 @@ interface GroupCardProps {
 
 const GroupCard = ({ image, title, text}: GroupCardProps) => {
     return (
-        <div className="flex flex-row bg-gray-200 gap-8 w-full rounded-2xl p-4">
+        <div className="flex flex-row bg-Gray2 gap-8 w-full rounded-2xl p-4">
             {image && (<img src={image} alt={title} width={85}  className="rounded-xl"/>)}
             <div className="flex flex-col justify-evenly items-start text-Blue">
                 <h1 className="font-bold text-xl">{title}</h1>
