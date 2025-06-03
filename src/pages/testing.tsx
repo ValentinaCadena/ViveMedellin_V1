@@ -1,9 +1,9 @@
-import SearchTitle from "@/components/atoms/searchTitle"
+import GroupSearchSection from "@/components/organisms/groupSearchSection"
 
 export default function Testing () {
     return (
         <div>
-            <SearchTitle></SearchTitle>
+            <GroupSearchSection></GroupSearchSection>
         </div>
     )
 }
