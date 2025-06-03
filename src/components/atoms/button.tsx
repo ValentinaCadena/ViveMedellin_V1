@@ -24,7 +24,7 @@ const Button = ({
 
   const colorClass =
     color === "blue"
-      ? "bg-white text-altBlue hover:text-white hover:bg-altBlue border-darkGray hover:border-altBlue rounded-lg p-2 px-4 font-semibold"
+      ? "bg-white text-altBlue hover:text-white hover:bg-altBlue border-darkGray hover:border-altBlue rounded-lg p-2 px-4 gap-4 font-semibold"
       : color === "blue2"
       ? "bg-white text-Blue hover:text-white hover:bg-Blue border-transparent rounded-lg p-2 px-4 gap-2 font-semibold text-base"
       : color === "orange"

@@ -1,8 +1,14 @@
-export default function SearchTitle () {
+import SearchBar from "./searchBar";
+
+interface SearchTitleProps {
+    onSearch: () => void;
+}
+
+export default function SearchTitle ({ onSearch }: SearchTitleProps) {
     return (
-        <div className="w-full space-y-4 border-b-2 border-Gray p-2 pb-4">
+        <div className="w-full space-y-4 border-b-2 border-Gray p-2 pb-6">
             <h1 className="text-3xl text-Blue font-bold">Grupos y comunidades</h1>
-            <input type="text" id="text" name="busqueda" placeholder="Búsqueda realizada" className="border-altGray p-3 border-2 text-lg rounded-3xl w-full"/>
+            <SearchBar text="Búsqueda realizada" icon="tabler:search" onSearch={onSearch}></SearchBar>
         </div>
     )
 }
