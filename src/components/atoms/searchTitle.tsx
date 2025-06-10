@@ -1,7 +1,7 @@
 import SearchBar from "./searchBar";
 
 interface SearchTitleProps {
-    onSearch: () => void;
+    onSearch: (query: string) => void;
 }
 
 export default function SearchTitle ({ onSearch }: SearchTitleProps) {

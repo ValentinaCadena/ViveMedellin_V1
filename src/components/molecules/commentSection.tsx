@@ -15,7 +15,7 @@ const CommentSection = ({ author, comment }: CommentSectionProps) => {
                 <GroupCard title={author} text={comment}></GroupCard>
                 <ReactionBar color="blue2" width="20" commentText="Responder"></ReactionBar>
             </div>
-            <p className="text-Blue left-18 bottom-2.5 absolute">15 h</p>
+            <p className="text-darkBlue left-18 bottom-2.5 absolute">15 h</p>
 
         </div>
     )

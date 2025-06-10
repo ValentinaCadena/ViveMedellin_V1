@@ -1,17 +1,14 @@
-import { useState } from "react";
+interface SwitchProps {
+  isChecked: boolean;
+  toggle: () => void;
+}
 
-export default function Switch() {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const toggleSwitch = () => {
-    setIsChecked(!isChecked);
-  };
-
+export default function Switch({ isChecked, toggle }: SwitchProps) {
   return (
     <div
-      onClick={toggleSwitch}
+      onClick={toggle}
       className={`w-12 h-7 flex items-center rounded-full cursor-pointer p-1 transition-colors duration-300 ${
-        isChecked ? "bg-Blue" : "bg-gray-300"
+        isChecked ? "bg-Emerald" : "bg-gray-300"
       }`}
     >
       <div

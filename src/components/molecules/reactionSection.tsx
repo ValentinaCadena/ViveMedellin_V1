@@ -2,7 +2,7 @@ import Button from "../atoms/button";
 
 export default function ReactionSection () {
     return (
-        <div className="flex flex-row w-full justify-between items-center text-xl text-Blue">
+        <div className="flex flex-row w-full justify-between items-center text-xl text-darkBlue">
             <div className="flex flex-row items-center gap-12">
                 <div className="flex items-center gap-4">
                     <Button icon="mdi:like-outline" widthIcon="30" color="roundedEmerald"></Button>
