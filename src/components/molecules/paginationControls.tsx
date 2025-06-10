@@ -46,7 +46,7 @@ export default function PaginationControls({
   };
 
   return (
-    <div className="flex justify-center text-darkBlue text-xl items-center gap-2 mt-6 pb-6 flex-wrap overflow-auto">
+    <div className="flex justify-center text-darkBlue text-xl items-center gap-2 mt-6 pb-6 flex-wrap">
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}

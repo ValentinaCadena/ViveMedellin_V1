@@ -3,7 +3,7 @@ import GroupCard from "../molecules/groupCard";
 import PaginationControls from "../molecules/paginationControls";
 import NoResults from "../atoms/noResults";
 import LoadingSpinner from "../atoms/loadingSpinner";
-import Switch from "../atoms/switch"; // ✅ Switch personalizado para activar/desactivar paginación
+import Switch from "../atoms/switch";
 import GroupInfo from "./groupInfo";
 import Button from "../atoms/button";
 
@@ -68,24 +68,24 @@ export default function GroupSearchSection({
   }, [groups, selectedCategory, onlyPrivate, usePagination, setLoading]);
 
   if (selectedGroup) {
-  return (
-    <div className="p-8 w-full space-y-6 h-201 relative">
-      <Button color="roundedBlue" icon="ic:sharp-keyboard-double-arrow-left" widthIcon="40" className="-top-2 -left-7 absolute" onClick={() => setSelectedGroup(null)}></Button>
-      <GroupInfo
-        image={selectedGroup.image}
-        members={selectedGroup.members}
-        groupName={selectedGroup.groupName}
-        isPrivate={selectedGroup.isPrivate}
-        topic={selectedGroup.topic}
-        author={selectedGroup.author}
-        date={selectedGroup.date}
-      />
-    </div>
-  );
-}
+    return (
+      <div className="w-full h-201 relative">
+        <Button color="roundedBlue" icon="ic:sharp-keyboard-double-arrow-left" widthIcon="40" className="-top-4 -left-16 absolute" onClick={() => setSelectedGroup(null)}></Button>
+        <GroupInfo
+          image={selectedGroup.image}
+          members={selectedGroup.members}
+          groupName={selectedGroup.groupName}
+          isPrivate={selectedGroup.isPrivate}
+          topic={selectedGroup.topic}
+          author={selectedGroup.author}
+          date={selectedGroup.date}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className="p-8 w-full space-y-6 h-201">
+    <div className="w-full space-y-6 h-full">
       {loading ? (
         <LoadingSpinner />
       ) : filteredGroups.length > 0 ? (
@@ -116,8 +116,8 @@ export default function GroupSearchSection({
                   groupName: group.title,
                   isPrivate: group.isPrivate,
                   topic: group.topic,
-                  author: "Autor Desconocido", // puedes cambiarlo si tienes info real
-                  date: "2025-06-09", // idem
+                  author: "Autor Desconocido", // datos de prueba
+                  date: "2025-06-09", // datos de prueba
                 })
               }
             />

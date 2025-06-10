@@ -10,6 +10,8 @@
   --darkBlue: #043D74;
   --Orange: #F97316;
   --Gray: #D9D9D9;
+  --Red: #DC2626;
+  --Blue2: #1E3A8A;
 }
 
 @theme inline {
@@ -22,6 +24,8 @@
   --color-Blue: var(--color-blue-950);
   --color-altGray: var(--color-slate-300);
   --color-Gray2: var(--color-gray-50);
+  --color-Red: var(--Red);
+  --color-Blue2: var(--Blue2);
 }
 
 /* Estilos Generales */
