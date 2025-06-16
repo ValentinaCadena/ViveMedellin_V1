@@ -30,10 +30,13 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
               image: "https://www.grupoanalisis.com/wp-content/uploads/2020/03/grupo-ayuda-artmemori.jpg",
               members: Math.floor(Math.random() * 500) + 50,
               groupName: "Manos a la obra",
+              id: 980,
+              description: "Sin descripción",
               isPrivate: true,
               topic: "Turismo",
               author: "Autor Desconocido",
               date: "2025-06-09",
+              groupState: "default",
             })
           }
         />
@@ -56,10 +59,13 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
               image: "https://www.grupoanalisis.com/wp-content/uploads/2020/03/grupo-ayuda-artmemori.jpg",
               members: Math.floor(Math.random() * 500) + 50,
               groupName: "Manos a la obra",
+              id: 981,
+              description: "Sin descripción",
               isPrivate: true,
               topic: "Cultura",
               author: "Autor Desconocido",
               date: "2025-06-09",
+              groupState: "default",
             })
           }
         />
@@ -82,10 +88,13 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
               image: "https://www.grupoanalisis.com/wp-content/uploads/2020/03/grupo-ayuda-artmemori.jpg",
               members: Math.floor(Math.random() * 500) + 50,
               groupName: "Manos a la obra",
+              id: 982,
+              description: "Sin descripción",
               isPrivate: false,
               topic: "Entretenimiento",
               author: "Autor Desconocido",
               date: "2025-06-09",
+              groupState: "default",
             })
           }
         />

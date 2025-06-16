@@ -6,9 +6,10 @@ interface GroupBasicInfoProps {
   groupName: string;
   isPrivate: boolean;
   members: number;
+  groupState: "enCreacion" | "creado" | "default";
 }
 
-export default function GroupBasicInfo({ image, groupName, isPrivate, members }: GroupBasicInfoProps) {
+export default function GroupBasicInfo({ image, groupName, isPrivate, members, groupState }: GroupBasicInfoProps) {
   return (
     <div className="text-darkBlue flex flex-col p-4 space-y-4 w-full">
       <img src={image} alt={groupName} className="rounded-2xl" />
@@ -27,7 +28,20 @@ export default function GroupBasicInfo({ image, groupName, isPrivate, members }:
             <p>{members} Miembros</p>
           </div>
         </div>
-        <Button text="Unirte" color="orange" className="text-xl px-8" />
+          {/* 🔽 Sección de botones dinámica */}
+        {groupState !== "enCreacion" && (
+          <div className="flex flex-row gap-4">
+            {groupState === "creado" && (
+              <>
+                <Button text="Administrar" color="orange" className="text-xl px-8" />
+                <Button text="Invitar" color="orange" className="text-xl px-8" />
+              </>
+            )}
+            {groupState === "default" && (
+              <Button text="Unirte" color="orange" className="text-xl px-8" />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

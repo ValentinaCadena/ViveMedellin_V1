@@ -9,7 +9,8 @@ import Button from "../atoms/button";
 
 interface Group {
   id: number;
-  title: string;
+  groupName: string;
+  description: string;
   image: string;
   topic: string;
   members: number;
@@ -29,10 +30,12 @@ interface GroupInfoProps {
   image: string;
   members: number;
   groupName: string;
+  description: string;
   isPrivate: boolean;
   topic: string;
   author: string;
   date: string;
+  groupState: "enCreacion" | "creado" | "default";
 }
 
 
@@ -69,17 +72,18 @@ export default function GroupSearchSection({
 
   if (selectedGroup) {
     return (
-      <div className="w-full h-201 relative">
+      <div className="w-full h-full relative">
         <Button color="roundedBlue" icon="ic:sharp-keyboard-double-arrow-left" widthIcon="40" className="-top-4 -left-16 absolute" onClick={() => setSelectedGroup(null)}></Button>
         <GroupInfo
           image={selectedGroup.image}
           members={selectedGroup.members}
           groupName={selectedGroup.groupName}
+          description={selectedGroup.description}
           isPrivate={selectedGroup.isPrivate}
           topic={selectedGroup.topic}
           author={selectedGroup.author}
-          date={selectedGroup.date}
-        />
+          date={selectedGroup.date} 
+          groupState={"default"}  />
       </div>
     );
   }
@@ -105,7 +109,7 @@ export default function GroupSearchSection({
               key={group.id}
               variant="search"
               image={group.image}
-              title={group.title}
+              title={group.groupName}
               text={`Tema: ${group.topic}`}
               text2={`${group.members} miembros`}
               button="Unirse"
@@ -113,11 +117,13 @@ export default function GroupSearchSection({
                 setSelectedGroup({
                   image: group.image,
                   members: group.members,
-                  groupName: group.title,
+                  groupName: group.groupName,
+                  description: group.description || "Sin descripción",
                   isPrivate: group.isPrivate,
                   topic: group.topic,
                   author: "Autor Desconocido", // datos de prueba
                   date: "2025-06-09", // datos de prueba
+                  groupState: "default",
                 })
               }
             />

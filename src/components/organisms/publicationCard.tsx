@@ -20,9 +20,10 @@ const PublicationCard = ({ groupImage, groupName, author, date, textPublication,
             <GroupCard
                 image={groupImage}
                 title={groupName}
+                description={"Sin descripción"}
                 text={`${author} - ${date}`}
                 members={123}
-                topic={"Tema no definido"}
+                topic={"Tema no definido"} 
                 isPrivate={false}
                 author={author}
                 date={date}

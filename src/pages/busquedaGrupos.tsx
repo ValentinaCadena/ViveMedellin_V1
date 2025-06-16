@@ -5,17 +5,21 @@ import Header from "@/components/molecules/header";
 import PublicationSection from "@/components/organisms/publicationSection";
 import GroupSearchSection from "@/components/organisms/groupSearchSection";
 import GroupInfo from "@/components/organisms/groupInfo";
-import { groupsData } from "@/data/groupsData";
+import CreateGroupSidebar from "@/components/organisms/createGroupSidebar";
+import { groupsData as initialGroupsData } from "@/data/groupsData";
 import Button from "@/components/atoms/button";
 
 export interface GroupInfoProps {
+  id: number;
   image: string;
   members: number;
   groupName: string;
+  description: string;
   isPrivate: boolean;
   topic: string;
   author: string;
   date: string;
+  groupState: "enCreacion" | "creado" | "default";
 }
 
 export default function BusquedaGrupos() {
@@ -26,6 +30,22 @@ export default function BusquedaGrupos() {
   const [onlyPrivate, setOnlyPrivate] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState<GroupInfoProps | null>(null);
+  const [creatingGroup, setCreatingGroup] = useState(false);
+  const [groups, setGroups] = useState(initialGroupsData);
+  const [nextGroupId, setNextGroupId] = useState(51); // empieza en 51
+
+  const [previewData, setPreviewData] = useState<GroupInfoProps>({
+    id: 0,
+    image: "/placeholder.png",
+    members: 1,
+    groupName: "",
+    description: "",
+    isPrivate: false,
+    groupState: "enCreacion",
+    topic: "",
+    author: "Username",
+    date: new Date().toLocaleDateString(),
+  });
 
   const handleSearch = (query: string) => {
     setLoading(true);
@@ -34,9 +54,9 @@ export default function BusquedaGrupos() {
     setHasSearched(true);
   };
 
-  const filteredGroups = groupsData.filter(
+  const filteredGroups = groups.filter(
     (group) =>
-      group.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      group.groupName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       group.topic.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -48,12 +68,29 @@ export default function BusquedaGrupos() {
           setSearchQuery("");
           setHasSearched(false);
           setOnlyPrivate(false);
-          setSelectedGroup(null); // Reset vista detallada también
+          setSelectedGroup(null);
+          setCreatingGroup(false);
         }}
       />
       <div className="flex gap-2">
         <div className="w-[30%]">
-          {searchActive ? (
+          {creatingGroup ? (
+            <CreateGroupSidebar
+              nextGroupId={nextGroupId}
+              onPreviewChange={setPreviewData}
+              onGroupCreated={(newGroup) => {
+                setGroups((prev) => [...prev, newGroup]);
+                setNextGroupId((prev) => prev + 1);
+                setCreatingGroup(false);
+                setSelectedGroup(newGroup);
+              }}
+              onCreationConfirmed={(newGroup) => {
+                //manejar info de creación
+                console.log("Grupo confirmado", newGroup)
+              }}
+              onBack={() => setCreatingGroup(false)}
+            />
+          ) : searchActive ? (
             <SidebarSearch
               onSearch={handleSearch}
               onCategoryChange={(category) => {
@@ -66,12 +103,22 @@ export default function BusquedaGrupos() {
               }}
             />
           ) : (
-            <Sidebar onSearch={handleSearch} setSelectedGroup={setSelectedGroup} />
+            <Sidebar
+              onSearch={handleSearch}
+              setSelectedGroup={setSelectedGroup}
+              onCreateClick={() => {
+                setCreatingGroup(true);
+                setSelectedGroup(null);
+                setSearchActive(false);
+              }}
+            />
           )}
         </div>
 
         <div className="p-16 pr-4 pt-6 w-[70%] h-213 overflow-auto relative">
-          {selectedGroup ? (
+          {creatingGroup ? (
+            <GroupInfo {...previewData} />
+          ) : selectedGroup ? (
             <>
               <Button
                 color="roundedBlue"

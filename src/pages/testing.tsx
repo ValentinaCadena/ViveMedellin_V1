@@ -1,10 +1,9 @@
-import Button from "@/components/atoms/button"
-import AlertModal from "@/components/molecules/alertModal"
+import CreateGroupSidebar from "@/components/organisms/createGroupSidebar"
 
 export default function Testing () {
     return (
-        <div>
-            <AlertModal></AlertModal>
+        <div className="bg-white flex justify-center items-center h-screen w-[30%]">
+            <CreateGroupSidebar></CreateGroupSidebar>
         </div>
     )
 }

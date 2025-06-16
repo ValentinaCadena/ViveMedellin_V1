@@ -10,6 +10,7 @@ interface GroupCardProps {
     variant?: string;
     onImageClick?: (info: GroupInfoProps) => void;
     members?: number;
+    description?: string;
     topic?: string;
     isPrivate?: boolean;
     author?: string;
@@ -20,13 +21,15 @@ interface GroupInfoProps {
   image: string;
   members: number;
   groupName: string;
+  description: string;
   isPrivate: boolean;
   topic: string;
   author: string;
   date: string;
+  groupState: "enCreacion" | "creado" | "default";
 }
 
-const GroupCard = ({ image, title, activity, text, text2, button, variant, onImageClick, members, topic, isPrivate, author, date }: GroupCardProps) => {
+const GroupCard = ({ image, title, activity, text, text2, button, variant, onImageClick, members, topic, isPrivate, author, date, description }: GroupCardProps) => {
 const cardClass =
     variant === "search"
     ? "shadow-xl border-2 border-altGray"
@@ -39,10 +42,12 @@ const cardClass =
                 image,
                 members: members ?? 0,
                 groupName: title,
+                description: description || "Sin descripción",
                 isPrivate: isPrivate ?? false,
                 topic: topic ?? "",
                 author: author ?? "",
                 date: date ?? "",
+                groupState: "default",
             })}/>)}
                 <div className="flex flex-col justify-evenly items-start text-darkBlue">
                     <h1 className="font-bold text-xl">{title}</h1>

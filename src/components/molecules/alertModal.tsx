@@ -1,23 +1,36 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
 import Button from "../atoms/button";
 
-const AlertModal = () => {
-    return (
-        <div className="fixed inset-0 bg-gray-300 flex justify-center items-center z-50">
-            <div className="bg-white p-8 rounded-2xl shadow-xl max-w-155 text-center space-y-10 px-28 w-full relative">
-                <div className="text-Red font-semibold flex gap-2 w-full items-center">
-                    <Icon icon="tabler:alert-circle" width={56} className="w-30"></Icon>
-                    <p className="text-justify text-lg">Debe estar registrado y autenticado para explorar todas las comunidades</p>
-                </div>
-                <div className="flex flex-col gap-2">
-                    <p className="text-Blue2 text-lg">Ingresa con tu usuario y contraseña</p>
-                    <Button text="Iniciar sesión" color="orange" className="text-xl"></Button>
-                    <p className="text-Blue2 text-lg">¿Aún no estás registrado?</p>
-                    <Button text="+ Crear una cuenta" color="orange" className="text-xl"></Button>
-                </div>
-            </div>
-        </div>
-    )
+interface AlertModalProps {
+  message: string;
+  type: "error" | "success";
+  onClose: () => void;
 }
+
+const AlertModal = ({ message, type, onClose }: AlertModalProps) => {
+  const isError = type === "error";
+
+  return (
+    <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50 h-full">
+      <div className="bg-white p-14 rounded-2xl shadow-xl max-w-160 text-center space-y-14 px-10 sm:px-28 w-full relative">
+        <div
+          className={`font-semibold flex w-full items-center justify-center ${
+            isError ? "text-Red" : "text-green-600"
+          }`}
+        >
+          <Icon
+            icon={isError ? "tabler:alert-circle" : "tabler:circle-check"}
+            width={64}
+            className="w-30"
+          />
+          <p className="text-left text-xl">{message}</p>
+        </div>
+        <div className="flex flex-col gap-2">
+          <Button text="Aceptar" color="orange" onClick={onClose} className="text-xl py-3"/>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default AlertModal;
