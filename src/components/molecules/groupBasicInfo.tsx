@@ -6,10 +6,18 @@ interface GroupBasicInfoProps {
   groupName: string;
   isPrivate: boolean;
   members: number;
-  groupState: "enCreacion" | "creado" | "default";
+  groupState: "enCreacion" | "creado" | "default" | "unido";
+  onJoin?: () => void;
 }
 
-export default function GroupBasicInfo({ image, groupName, isPrivate, members, groupState }: GroupBasicInfoProps) {
+export default function GroupBasicInfo({
+  image,
+  groupName,
+  isPrivate,
+  members,
+  groupState,
+  onJoin,
+}: GroupBasicInfoProps) {
   return (
     <div className="text-darkBlue flex flex-col p-4 space-y-4 w-full">
       <img src={image} alt={groupName} className="rounded-2xl" />
@@ -17,10 +25,7 @@ export default function GroupBasicInfo({ image, groupName, isPrivate, members, g
       <div className="flex justify-between">
         <div className="flex gap-8 items-center text-2xl">
           <div className="flex gap-2 items-center">
-            <Icon 
-              icon={isPrivate ? "mdi:lock-outline" : "ri:global-line"} 
-              width={36} 
-            />
+            <Icon icon={isPrivate ? "mdi:lock-outline" : "ri:global-line"} width={36} />
             <p>{isPrivate ? "Grupo Privado" : "Grupo Público"}</p>
           </div>
           <div className="flex gap-6 items-center">
@@ -28,7 +33,7 @@ export default function GroupBasicInfo({ image, groupName, isPrivate, members, g
             <p>{members} Miembros</p>
           </div>
         </div>
-          {/* 🔽 Sección de botones dinámica */}
+
         {groupState !== "enCreacion" && (
           <div className="flex flex-row gap-4">
             {groupState === "creado" && (
@@ -38,7 +43,10 @@ export default function GroupBasicInfo({ image, groupName, isPrivate, members, g
               </>
             )}
             {groupState === "default" && (
-              <Button text="Unirte" color="orange" className="text-xl px-8" />
+              <Button text="Unirte" color="orange" className="text-xl px-8" onClick={onJoin}/>
+            )}
+            {groupState === "unido" && (
+              <Button text="Invitar" color="orange" className="text-xl px-8" />
             )}
           </div>
         )}

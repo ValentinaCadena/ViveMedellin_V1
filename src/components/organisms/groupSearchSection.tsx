@@ -17,15 +17,6 @@ interface Group {
   isPrivate: boolean;
 }
 
-interface GroupSearchSectionProps {
-  groups: Group[];
-  selectedCategory: string;
-  onlyPrivate: boolean;
-  searchQuery: string;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 interface GroupInfoProps {
   image: string;
   members: number;
@@ -35,9 +26,8 @@ interface GroupInfoProps {
   topic: string;
   author: string;
   date: string;
-  groupState: "enCreacion" | "creado" | "default";
+  groupState: "enCreacion" | "creado" | "default" | "unido";
 }
-
 
 export default function GroupSearchSection({
   groups,
@@ -46,10 +36,20 @@ export default function GroupSearchSection({
   searchQuery,
   loading,
   setLoading,
-}: GroupSearchSectionProps) {
+}: {
+  groups: Group[];
+  selectedCategory: string;
+  onlyPrivate: boolean;
+  searchQuery: string;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [usePagination, setUsePagination] = useState(false);
   const itemsPerPage = 4;
+
+  const [groupStates, setGroupStates] = useState<Record<string, "default" | "unido">>({});
+  const [selectedGroup, setSelectedGroup] = useState<GroupInfoProps | null>(null);
 
   const filteredGroups = groups.filter((group) => {
     const matchesCategory = selectedCategory ? group.topic === selectedCategory : true;
@@ -61,8 +61,6 @@ export default function GroupSearchSection({
   const currentGroups = usePagination
     ? filteredGroups.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
     : filteredGroups;
-  const [selectedGroup, setSelectedGroup] = useState<GroupInfoProps | null>(null);
-
 
   useEffect(() => {
     setCurrentPage(1);
@@ -70,20 +68,24 @@ export default function GroupSearchSection({
     return () => clearTimeout(timer);
   }, [groups, selectedCategory, onlyPrivate, usePagination, setLoading]);
 
+  const handleJoin = (groupName: string) => {
+    setGroupStates((prev) => ({
+      ...prev,
+      [groupName]: "unido",
+    }));
+  };
+
   if (selectedGroup) {
     return (
       <div className="w-full h-full relative">
-        <Button color="roundedBlue" icon="ic:sharp-keyboard-double-arrow-left" widthIcon="40" className="-top-4 -left-16 absolute" onClick={() => setSelectedGroup(null)}></Button>
-        <GroupInfo
-          image={selectedGroup.image}
-          members={selectedGroup.members}
-          groupName={selectedGroup.groupName}
-          description={selectedGroup.description}
-          isPrivate={selectedGroup.isPrivate}
-          topic={selectedGroup.topic}
-          author={selectedGroup.author}
-          date={selectedGroup.date} 
-          groupState={"default"}  />
+        <Button
+          color="roundedBlue"
+          icon="ic:sharp-keyboard-double-arrow-left"
+          widthIcon="40"
+          className="-top-4 -left-16 absolute"
+          onClick={() => setSelectedGroup(null)}
+        />
+        <GroupInfo {...selectedGroup} />
       </div>
     );
   }
@@ -109,26 +111,21 @@ export default function GroupSearchSection({
               key={group.id}
               variant="search"
               image={group.image}
-              title={group.groupName}
+              groupName={group.groupName}
               text={`Tema: ${group.topic}`}
               text2={`${group.members} miembros`}
               button="Unirse"
-              onImageClick={() =>
-                setSelectedGroup({
-                  image: group.image,
-                  members: group.members,
-                  groupName: group.groupName,
-                  description: group.description || "Sin descripción",
-                  isPrivate: group.isPrivate,
-                  topic: group.topic,
-                  author: "Autor Desconocido", // datos de prueba
-                  date: "2025-06-09", // datos de prueba
-                  groupState: "default",
-                })
-              }
+              groupState={groupStates[group.groupName] || "default"}
+              onJoin={handleJoin}
+              onImageClick={(info) => setSelectedGroup(info)}
+              members={group.members}
+              description={group.description}
+              isPrivate={group.isPrivate}
+              topic={group.topic}
+              author="Autor Desconocido"
+              date="2025-06-09"
             />
           ))}
-
 
           {usePagination && (
             <PaginationControls
@@ -139,7 +136,7 @@ export default function GroupSearchSection({
           )}
         </>
       ) : (
-        <NoResults searchTerm={searchQuery}/>
+        <NoResults searchTerm={searchQuery} />
       )}
     </div>
   );

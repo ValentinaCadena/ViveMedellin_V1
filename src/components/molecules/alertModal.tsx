@@ -14,7 +14,7 @@ const AlertModal = ({ message, type, onClose }: AlertModalProps) => {
     <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50 h-full">
       <div className="bg-white p-14 rounded-2xl shadow-xl max-w-160 text-center space-y-14 px-10 sm:px-28 w-full relative">
         <div
-          className={`font-semibold flex w-full items-center justify-center ${
+          className={`font-semibold flex w-full gap-4 items-center justify-center ${
             isError ? "text-Red" : "text-green-600"
           }`}
         >

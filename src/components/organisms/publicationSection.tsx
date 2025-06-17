@@ -1,11 +1,20 @@
 import PublicationCard from "./publicationCard";
 import { GroupInfoProps } from "@/pages/busquedaGrupos";
+import { useState } from "react";
 
 interface PublicationSectionProps {
   setSelectedGroup: (group: GroupInfoProps) => void;
 }
 
 export default function PublicationSection({ setSelectedGroup }: PublicationSectionProps) {
+  const [joinedGroups, setJoinedGroups] = useState<number[]>([]);
+
+  const handleJoin = (id: number) => {
+    if (!joinedGroups.includes(id)) {
+      setJoinedGroups([...joinedGroups, id]);
+    }
+  };
+
   return (
     <div>
       <h1 className="text-3xl text-darkBlue font-bold pb-6 text-start">
@@ -25,6 +34,8 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
           }
           commentAuthor="Valentina"
           comment="Comentario -- Linea 1 Linea 2"
+          groupState={joinedGroups.includes(980) ? "unido" : "default"}
+          onJoin={() => handleJoin(980)}
           onImageClick={() =>
             setSelectedGroup({
               image: "https://www.grupoanalisis.com/wp-content/uploads/2020/03/grupo-ayuda-artmemori.jpg",
@@ -36,7 +47,7 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
               topic: "Turismo",
               author: "Autor Desconocido",
               date: "2025-06-09",
-              groupState: "default",
+              groupState: joinedGroups.includes(980) ? "unido" : "default",
             })
           }
         />
@@ -54,6 +65,8 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
           }
           commentAuthor="Valentina"
           comment="Comentario -- Linea 1 Linea 2"
+          groupState={joinedGroups.includes(981) ? "unido" : "default"}
+          onJoin={() => handleJoin(981)}
           onImageClick={() =>
             setSelectedGroup({
               image: "https://www.grupoanalisis.com/wp-content/uploads/2020/03/grupo-ayuda-artmemori.jpg",
@@ -65,7 +78,7 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
               topic: "Cultura",
               author: "Autor Desconocido",
               date: "2025-06-09",
-              groupState: "default",
+              groupState: joinedGroups.includes(981) ? "unido" : "default",
             })
           }
         />
@@ -83,6 +96,8 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
           }
           commentAuthor="Valentina"
           comment="Comentario -- Linea 1 Linea 2"
+          groupState={joinedGroups.includes(982) ? "unido" : "default"}
+          onJoin={() => handleJoin(982)}
           onImageClick={() =>
             setSelectedGroup({
               image: "https://www.grupoanalisis.com/wp-content/uploads/2020/03/grupo-ayuda-artmemori.jpg",
@@ -94,7 +109,7 @@ export default function PublicationSection({ setSelectedGroup }: PublicationSect
               topic: "Entretenimiento",
               author: "Autor Desconocido",
               date: "2025-06-09",
-              groupState: "default",
+              groupState: joinedGroups.includes(982) ? "unido" : "default",
             })
           }
         />

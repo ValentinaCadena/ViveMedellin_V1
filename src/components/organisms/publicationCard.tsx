@@ -12,14 +12,16 @@ interface PublicationCardProps {
     commentAuthor: string;
     comment: string;
     onImageClick: () => void;
+    onJoin: () => void;
+    groupState: "enCreacion" | "creado" | "default" | "unido"; 
 }
 
-const PublicationCard = ({ groupImage, groupName, author, date, textPublication, commentAuthor, comment, onImageClick}: PublicationCardProps) => {
+const PublicationCard = ({ groupImage, groupName, author, date, textPublication, commentAuthor, comment, onImageClick, onJoin, groupState}: PublicationCardProps) => {
     return (
         <div className="bg-white border-2 w-full border-altGray shadow-lg space-y-4 p-4 px-6 pb-12 rounded-3xl">
             <GroupCard
                 image={groupImage}
-                title={groupName}
+                groupName={groupName}
                 description={"Sin descripción"}
                 text={`${author} - ${date}`}
                 members={123}
@@ -27,7 +29,10 @@ const PublicationCard = ({ groupImage, groupName, author, date, textPublication,
                 isPrivate={false}
                 author={author}
                 date={date}
-                onImageClick={onImageClick} />
+                onImageClick={onImageClick}
+                onJoin={onJoin}
+                groupState={groupState}
+            />
             <p className="text-2xl font-semibold text-darkBlue">{textPublication}</p>
             <ReactionSection></ReactionSection>
             <ReactionBar border="gray" color="orangeReverse" width="30" commentText="Comentar"></ReactionBar>

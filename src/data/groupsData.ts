@@ -2,7 +2,7 @@ export interface Group {
   id: number;
   groupName: string;
   description: string;
-  groupState: "enCreacion" | "creado" | "default";
+  groupState: "enCreacion" | "creado" | "default" | "unido";
   topic: string;
   members: number;
   isPrivate: boolean;
@@ -34,7 +34,6 @@ const groupsData: Group[] = [
   ...Array.from({ length: 47 }, (_, i) => {
     const categories = ["Cultura", "Entretenimiento", "Turismo"];
     const category = categories[i % 3];
-
     return {
       id: i + 4,
       groupName: `${category} Grupo ${i + 4}`,
@@ -47,9 +46,5 @@ const groupsData: Group[] = [
     };
   }),
 ];
-
-export const addGroup = (group: Group) => {
-  groupsData.push(group);
-};
 
 export { groupsData };

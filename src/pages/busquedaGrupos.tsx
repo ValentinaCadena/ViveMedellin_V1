@@ -19,7 +19,7 @@ export interface GroupInfoProps {
   topic: string;
   author: string;
   date: string;
-  groupState: "enCreacion" | "creado" | "default";
+  groupState: "enCreacion" | "creado" | "default" | "unido";
 }
 
 export default function BusquedaGrupos() {
