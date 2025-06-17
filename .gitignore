@@ -62,11 +62,7 @@ history/
 .vscode/
 
 # Archivos de Imágenes y Fuentes
-*.png
-*.jpg
-*.jpeg
 *.gif
-*.svg
 *.ico
 *.webp
 *.woff

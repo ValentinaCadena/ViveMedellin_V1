@@ -79,7 +79,6 @@ const GroupCard = ({
     <div className={`flex flex-row bg-Gray2 gap-8 ${cardClass} w-full rounded-2xl p-4`}>
       <div className="flex flex-row gap-8 w-full">
         {image && (
-          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={image}
             alt={groupName}

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Button from "../atoms/button";
 
 interface HeaderProps {
