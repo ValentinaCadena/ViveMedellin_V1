@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Button from "../atoms/button"
 import { useRouter } from "next/router"
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Icon } from "@iconify/react";
 import Button from "../atoms/button";
 
@@ -19,7 +20,9 @@ export default function GroupBasicInfo({
   onJoin,
 }: GroupBasicInfoProps) {
   return (
+    // eslint-disable-next-line react/jsx-no-comment-textnodes
     <div className="text-darkBlue flex flex-col p-4 space-y-4 w-full">
+      // eslint-disable-next-line @next/next/no-img-element, @next/next/no-img-element
       <img src={image} alt={groupName} className="rounded-2xl" />
       <h1 className="text-4xl font-semibold">{groupName}</h1>
       <div className="flex justify-between">

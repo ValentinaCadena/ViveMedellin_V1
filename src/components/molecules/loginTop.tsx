@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 export default function LoginTop () {
     return (
         <div className="full flex flex-col gap-4 justify-center items-center">

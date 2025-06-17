@@ -31,7 +31,7 @@ const groupsData: Group[] = [
     groupState: "default",
   },
   // 👇 Añadimos groupState: "default" aquí también
-  ...Array.from({ length: 47 }, (_, i) => {
+  ...Array.from({ length: 47 }, (_, i): Group => {
     const categories = ["Cultura", "Entretenimiento", "Turismo"];
     const category = categories[i % 3];
     return {
